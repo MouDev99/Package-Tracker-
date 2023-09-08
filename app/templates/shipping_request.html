@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <form method="POST" action="{{ url_for('.new_package') }}">
+           {{ form.csrf_token }}
+           {% for field in form %}
+            {% if field.type in ["SubmitField"] %}
+              {{ field() }}
+            {% elif field.type in ["BooleanField"] %}
+              {{ field() }}
+              {{ field.label }} <br> <br>
+            {% elif field.type not in ["CSRFTokenField"] %}
+              {{ field.label }}
+              {{ field() }} <br> <br>
+            {% endif %}
+           {% endfor %}
+        </form>
+    </body>
+</html>
