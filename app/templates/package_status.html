@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<htm>
+    <head></head>
+    <body>
+        <nav>
+            <ul>
+                <li style="list-style: none;"><a href="/">Home</a></li>
+                <li style="list-style: none;"><a href="/new_package">New package</a></li>
+            </ul>
+        </nav>
+        <table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>sender</th>
+                    <th>recipient</th>
+                    <th>origin</th>
+                    <th>destination</th>
+                    <th>location</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in rows %}
+                 <tr>
+                    <td>{{ row.id }}</td>
+                    <td>{{ row.name }}</td>
+                    <td>{{ row.recipient }}</td>
+                    <td>{{ row.origin }}</td>
+                    <td>{{ row.destination }}</td>
+                    <td>{{ row.location }}</td>
+                 </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </body>
+</htm>

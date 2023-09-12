@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+
+    </head>
+    <bod>
+        <form method="POST" action="{{ url_for('session.login') }}">
+            {{ form.csrf_token }}
+            {% if form.login_error %}
+                <div style="border: 2px solid red; background-color: rgb(143, 44, 44); border-radius: 5px; width: fit-content; padding: 4px;">
+                    {{ form.login_error }}
+                </div> <br>
+            {% endif %}
+            <div>
+                {{ form.credential.label }}
+                {{ form.credential() }}
+            </div> <br>
+            <div>
+                {{ form.password.label }}
+                {{ form.password() }}
+            </div> <br>
+            <div>
+                {{ form.submit() }}
+            </div>
+        </form>
+        <div>
+            <p>Don't have an account? sign up <a href="{{ url_for('.signup') }}">HERE</a> </p>
+        </div>
+    </bod>
+</html>

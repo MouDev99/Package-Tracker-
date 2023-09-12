@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+
+    </head>
+    <body>
+        <form Method="POST" action="{{ url_for('.signup') }}">
+            {{ form.csrf_token }}
+            <div>
+                {{ form.user_name.label }} <br>
+                {{ form.user_name() }}
+            </div> <br>
+            <div>
+                {{ form.email.label }} <br>
+                {{ form.email() }}
+            </div> <br>
+            <div>
+                {{ form.password.label }} <br>
+                {{ form.password() }}
+            </div> <br>
+            <div>{{ form.submit() }}</div>
+        </form>
+    </body>
+</html>
