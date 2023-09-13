@@ -1,5 +1,5 @@
 from flask import Blueprint, redirect, render_template, url_for
-from flask_login import current_user, login_user
+from flask_login import current_user, login_user, logout_user
 from sqlalchemy import or_
 from app.forms.login_form import LoginForm
 from app.forms.signup_form import SignupForm
@@ -25,6 +25,12 @@ def login():
         login_user(user)
         return redirect("/")
     return render_template("login_form.html", form=form)
+
+
+@session_bp.route("/logout", methods=["POST"])
+def logout():
+    logout_user()
+    return redirect(url_for(".login"))
 
 
 @session_bp.route("/signup", methods=["GET", "POST"])

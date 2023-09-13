@@ -1,13 +1,30 @@
 <!DOCTYPE html>
 <htm>
-    <head></head>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/package_status.css') }}">
+        <script src="{{ url_for('static', filename='scripts/profile_info.js') }}"></script>
+    </head>
     <body>
-        <nav>
-            <ul>
-                <li style="list-style: none;"><a href="/">Home</a></li>
-                <li style="list-style: none;"><a href="/new_package">New package</a></li>
-            </ul>
-        </nav>
+        <div class="header">
+            <nav>
+                <ul>
+                    <li style="list-style: none;"><a href="/">Home</a></li>
+                    <li style="list-style: none;"><a href="/new_package">New package</a></li>
+                </ul>
+            </nav>
+            <div class="profile">
+              <img
+                src="{{ url_for('static', filename='icons/user.png') }}"
+              >
+              <div class="user_info hidden">
+                <p>{{ user.name }}</p>
+                <p>{{ user.email }}</p>
+                <form method="POST" action="{{ url_for('session.logout') }}">
+                    <button type="submit">Logout</button>
+                </form>
+              </div>
+            </div>
+        </div>
         <table>
             <thead>
                 <tr>

@@ -28,7 +28,11 @@ def load_user(id):
 @login_required
 def index():
     rows = Package.query.filter(Package.user_id==current_user.id).all()
-    return render_template("package_status.html", rows=rows)
+    user_info = {
+        "name": current_user.user_name,
+        "email": current_user.email
+    }
+    return render_template("package_status.html", rows=rows, user=user_info)
 
 
 @app.route("/new_package", methods=["GET", "POST"])
