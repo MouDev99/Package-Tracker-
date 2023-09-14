@@ -8,3 +8,4 @@ flask-sqlalchemy
 alembic
 flask-migrate
 flask-login
+gunicorn
