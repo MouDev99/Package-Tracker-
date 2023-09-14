@@ -1,0 +1,11 @@
+[packages]
+flask = "*"
+python-dotenv = "*"
+jinja2 = "*"
+flask-wtf = "*"
+psycopg2-binary = "*"
+sqlalchemy = "*"
+flask-sqlalchemy = "*"
+alembic = "*"
+flask-migrate = "*"
+flask-login = "*"
