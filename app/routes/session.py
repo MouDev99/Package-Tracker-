@@ -19,7 +19,7 @@ def login():
         user = User.query.filter(or_(User.user_name == user_credential,
                                  User.email == user_credential)).first()
         if not user or not user.check_password(form.password.data):
-            form.login_error = "Incorrect (username/email) or/and passowrd"
+            form.login_error = "User not found or password didn't match"
             return render_template("login_form.html", form=form)
 
         login_user(user)
