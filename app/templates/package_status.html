@@ -34,6 +34,8 @@
                     <th>origin</th>
                     <th>destination</th>
                     <th>location</th>
+                    <th>express shipping</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -45,6 +47,21 @@
                     <td>{{ row.origin }}</td>
                     <td>{{ row.destination }}</td>
                     <td>{{ row.location }}</td>
+                    <td>
+                        {% if row.express_shipping %}
+                         ✔
+                        {% else %}
+                         ❌
+                        {% endif %}
+                    </td>
+                    <td>
+                        <form
+                          method="DELETE"
+                          action="{{ url_for('.delete_package', id=row.id) }}"
+                        >
+                            <button type="submit">delete</button>
+                        </form>
+                    </td>
                  </tr>
                 {% endfor %}
             </tbody>

@@ -17,6 +17,7 @@ class Package(db.Model):
     origin = db.Column(db.String(20), nullable=False)
     destination = db.Column(db.String(20), nullable=False)
     location = db.Column(db.String(20), nullable=False)
+    express_shipping = db.Column(db.Boolean)
     user_id = db.Column(db.ForeignKey("users.id"), nullable=False)
 
     user = relationship("User", back_populates="packages")

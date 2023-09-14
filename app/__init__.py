@@ -45,7 +45,8 @@ def add_new_package():
                         "recipient": data["recipient_name"],
                         "destination": data["destination"],
                         "origin": data["origin"],
-                        "location": data["origin"]
+                        "location": data["origin"],
+                        "express_shipping": data["express_shipping"]
                         }
         user = User.query.get(current_user.id)
         new_package = Package(**package_data, user=user)
@@ -56,3 +57,11 @@ def add_new_package():
         return redirect("/")
 
     return render_template("shipping_request.html", form=form)
+
+@app.route("/package/delete/<int:id>")
+@login_required
+def delete_package(id):
+    package_to_delete = Package.query.get(id)
+    db.session.delete(package_to_delete)
+    db.session.commit()
+    return redirect("/")

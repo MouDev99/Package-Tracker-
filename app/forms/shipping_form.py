@@ -25,9 +25,6 @@ class ShippingForm(FlaskForm):
                          validators=[DataRequired()])
     destination = SelectField("Destination", choices=choices,
                               validators=[DataRequired()])
-    express_shipping = BooleanField(
-        "Express Shipping",
-        validators=[DataRequired()]
-    )
+    express_shipping = BooleanField("Express Shipping")
     submit = SubmitField("Submit")
     cancel = SubmitField("Cancel")

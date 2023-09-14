@@ -1,8 +1,8 @@
 """create packages and users tables
 
-Revision ID: 5fe89d08108a
-Revises: 6620ad714db9
-Create Date: 2023-09-12 07:43:36.085589
+Revision ID: 5908d07ffa74
+Revises: 
+Create Date: 2023-09-14 07:50:47.259415
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '5fe89d08108a'
-down_revision = '6620ad714db9'
+revision = '5908d07ffa74'
+down_revision = None
 branch_labels = None
 depends_on = None
 
@@ -34,6 +34,7 @@ def upgrade():
     sa.Column('origin', sa.String(length=20), nullable=False),
     sa.Column('destination', sa.String(length=20), nullable=False),
     sa.Column('location', sa.String(length=20), nullable=False),
+    sa.Column('express_shipping', sa.Boolean(), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
