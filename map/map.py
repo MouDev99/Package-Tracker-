@@ -80,11 +80,27 @@ map_dij = {
 }
 
 # map is designated as a parameter instead of referencing map_dij directly from the higher scope
-# This allows for the function to be dynamic. 
+# This allows for the function to be dynamic.
 # It is used in the testing examples below on a simpler map.
 def find_shortest_path_dij(map, start, end):
     pass
     # Your code here
+    visited = set()
+    dic = {city: float('infinity') for city in map}
+    dic[start] = 0
+    path = {city: [] for city in map}
+
+    while True:
+        currCity = min((city for city in map if city not in visited), key=lambda city: dic[city])
+        visited.add(currCity)
+
+        if currCity == end:
+            return path[end] + [end]
+
+        for neighbor, distance in map[currCity]:
+            if dic[currCity] + distance < dic[neighbor]:
+                dic[neighbor] = dic[currCity] + distance
+                path[neighbor] = path[currCity] + [currCity]
 
 # PHASE TWO Testing
 # print("BFS:", find_shortest_path("Seattle", "Washington D.C."))  # BFS: ['Seattle', 'Washington D.C.']
